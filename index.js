@@ -50,4 +50,8 @@ async function invokeAction({ action, id, name, email, phone }) {
   }
 }
 
-invokeAction(argv)
+// ;(async () => {
+//   await invokeAction(argv)
+// })()
+
+invokeAction(argv).then().catch()

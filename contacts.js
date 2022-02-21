@@ -30,12 +30,18 @@ async function removeContact(contactId) {
     return null
   }
 
-  const [deletContact] = contacts.splice(idx, 1)
+  // const [deletContact] = contacts.splice(idx, 1)
+  // await fs.writeFile(
+  //   path.join(__dirname, 'db/contacts.json'),
+  //   JSON.stringify(contacts, null, 2),
+  // )
+  // return deletContact
+  const newCont = contacts.filter((_, index) => index !== idx)
   await fs.writeFile(
     path.join(__dirname, 'db/contacts.json'),
-    JSON.stringify(contacts, null, 2),
+    JSON.stringify(newCont, null, 2),
   )
-  return deletContact
+  return newCont[idx]
 }
 
 async function addContact(name, email, phone) {
